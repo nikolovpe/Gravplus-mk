@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: nikolovpe/Gravplus-mk
+  branch: main
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+locale: "mk"
+site_url: /
+display_url: /
+publish_mode: simple
+collections:
+  - name: "catalog"
+    label: "Каталог"
+    files:
+      - name: "products"
+        label: "Производи"
+        file: "products/products.json"
+        format: "json"
+        fields:
+          - label: "Производи"
+            name: "products"
+            widget: "list"
+            summary: "{{fields.title}} – {{fields.price}} ден."
+            fields:
+              - { label: "Име на производ", name: "title", widget: "string" }
+              - { label: "Цена (денари)", name: "price", widget: "number", value_type: "int", default: 500, min: 0 }
+              - { label: "Фотографија", name: "image", widget: "image", required: false }
+              - { label: "Опис", name: "description", widget: "text", required: false }
+              - { label: "Прикажи на веб-страницата", name: "active", widget: "boolean", default: true }
